@@ -24,5 +24,7 @@ namespace DDC.Client.MVVM.View
         {
             InitializeComponent();
         }
+
+        
     }
 }

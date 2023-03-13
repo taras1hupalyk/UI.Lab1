@@ -8,6 +8,12 @@
              d:DesignHeight="450" d:DesignWidth="800"
              Background="White">
     <Grid>
-            
+        <Button Content="Lorem ipsum" 
+                Foreground="Black"  
+                FontWeight="Bold" 
+                BorderBrush="Orange" 
+                Background="Orange" 
+                Width="200" Height="100"
+                FontSize="28" />
     </Grid>
 </UserControl>
