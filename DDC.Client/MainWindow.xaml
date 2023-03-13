@@ -71,6 +71,28 @@
                             Content="{Binding CurrentView}"
                 />
 
+            
+            <Button 
+                Content="❌"
+                Style="{StaticResource windowButtonsTheme}"
+                BorderThickness="0"
+                Foreground="#141d34"
+                VerticalAlignment="Top" 
+                HorizontalAlignment="Right" 
+                Grid.Column="1" 
+                Margin="0,5,19,0" Click="ExitButton_Click"/>
+
+            <Button 
+                Content="➖"
+                Style="{StaticResource windowButtonsTheme}"
+                BorderThickness="0"
+                Foreground="#141d34"
+                VerticalAlignment="Top" 
+                HorizontalAlignment="Right" 
+                Grid.Column="1" 
+                Margin="0,5,60,0" Click="MinimizeButton_Click"/>
+
+
         </Grid>
         
     </Border>
