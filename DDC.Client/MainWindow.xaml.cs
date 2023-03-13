@@ -25,6 +25,27 @@ namespace DDC.Client
             InitializeComponent();
         }
 
-        
+        private void ExitButton_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Application.Current.MainWindow.Close();
+            }
+            finally
+            {
+                //TODO: Fill this finally section with code which will save calculation into file
+            }
+        }
+
+        private void MinimizeButton_Click(object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState.Minimized;
+        }
+
+        protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
+        {
+            base.OnMouseLeftButtonDown(e);
+            this.DragMove();
+        }
     }
 }
