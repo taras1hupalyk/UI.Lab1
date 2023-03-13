@@ -42,5 +42,10 @@ namespace DDC.Client
             WindowState = WindowState.Minimized;
         }
 
+        protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
+        {
+            base.OnMouseLeftButtonDown(e);
+            this.DragMove();
+        }
     }
 }
