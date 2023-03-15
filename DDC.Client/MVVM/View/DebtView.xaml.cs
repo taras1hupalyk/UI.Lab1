@@ -23,6 +23,7 @@ namespace DDC.Client.MVVM.View
         public DebtView()
         {
             InitializeComponent();
+            cbbMethod.SelectedIndex = 0;
         }
 
         
