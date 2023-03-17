@@ -4,18 +4,154 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:DDC.Client.MVVM.View"
+             xmlns:viewmodel="clr-namespace:DDC.Client.MVVM.ViewModel"              
+             d:DataContext="{d:DesignInstance Type=viewmodel:DepositViewModel}"             
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid
-        Background="Orange">
+             d:DesignHeight="600" d:DesignWidth="720"
+             Background="White">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="1" Grid.ColumnSpan="5" Background="#f2f2f2" CornerRadius="7" Margin="30 15">
+            <StackPanel Grid.Row="1" Grid.ColumnSpan="5" Orientation="Horizontal"  >
+                <StackPanel.Resources>
+                    <Style TargetType="{x:Type WrapPanel}">
+                        <Setter Property="Margin" Value="15 7"/>
+                    </Style>
+                    <Style TargetType="{x:Type TextBox}">
+                        <Setter Property="Width" Value="80"/>
+                        <Setter Property="BorderBrush" Value="#f2f2f2"/>
+
+                    </Style>
+                    <Style TargetType="{x:Type TextBlock}">
+                        <Setter Property="FontSize" Value="16"/>
+                    </Style>
+                </StackPanel.Resources>
+
+                <WrapPanel Orientation="Vertical">
+                    <TextBlock Margin="0 7">Кількість коштів</TextBlock>
+                    <TextBox Text="{Binding DebtAmount}" >
+                        <TextBox.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="3"/>
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+                </WrapPanel>
+
+                <WrapPanel Orientation="Vertical">
+                    <TextBlock Margin="0 7">Відсоток</TextBlock>
+                    <TextBox Text="{Binding InterestRate}">
+                        <TextBox.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="3"/>
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+                </WrapPanel>
+
+                <WrapPanel Orientation="Vertical">
+                    <TextBlock Margin="0 7">Термін</TextBlock>
+                    <TextBox Text="{Binding Months}">
+                        <TextBox.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="3"/>
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+                </WrapPanel>
+
+                <WrapPanel Orientation="Vertical">
+                    <TextBlock Margin="0 6">Deposit type</TextBlock>
+                    <ComboBox Name="cbbMethod"
+                           SelectedIndex="0"
+                           SelectedItem="{Binding CalculationMethod}"
+                           Width="100">
+                        <ComboBoxItem >Прості відсотки</ComboBoxItem>
+                        <ComboBoxItem>Складні відсотки</ComboBoxItem>
+                    </ComboBox>
+                </WrapPanel>
+
+                <Button Command="{Binding CalculateCommand}" 
+                    Width="100" Height="40"  
+                    Margin="30 7"
+                    Background="White"
+                    BorderBrush="#6c86c6">Calculate
+
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="5"/>
+                        </Style>
+                    </Button.Resources>
+
+                </Button>
+
+            </StackPanel>
+
+        </Border>
 
 
-        <TextBlock VerticalAlignment="Center"
-                   HorizontalAlignment="Center"
-                   FontSize="52"
-                   FontWeight="Bold"
-                   
-            Text="Some Bald Text &#x0a;  Big and Black"/>
+        <StackPanel Orientation="Vertical"
+                    Grid.ColumnSpan="2"
+                    Grid.Row="2"
+                    HorizontalAlignment="Center"
+                    Margin="0,10,0,40">
+
+            <StackPanel.Resources>
+                <Style TargetType="{x:Type WrapPanel}">
+                    <Setter Property="Margin" Value="0 30"/>
+                </Style>
+                <Style TargetType="{x:Type Label}">
+                    <Setter Property="FontSize" Value="20"/>
+                </Style>
+            </StackPanel.Resources>
+            <WrapPanel Orientation="Vertical">
+                <Label>Monthly payment</Label>
+                <Label Content="{Binding MonthlyPayment}"></Label>
+                <Line
+                    X1="0" Y1="0"
+                    X2="150" Y2="0"
+                    Stroke="Silver"
+                    StrokeThickness="0.5"
+                    VerticalAlignment="Top"/>
+            </WrapPanel>
+
+            <WrapPanel Orientation="Vertical">
+                <Label>За відсотками</Label>
+                <Label Content="{Binding TotalInterest}"></Label>
+                <Line
+                    X1="0" Y1="0"
+                    X2="150" Y2="0"
+                    Stroke="Silver"
+                    StrokeThickness="0.5"
+                    VerticalAlignment="Top"/>
+            </WrapPanel>
+
+
+            <WrapPanel Orientation="Vertical">
+                <Label>Total</Label>
+                <Label Content="{Binding TotalSum}"></Label>
+                <Line
+                    X1="0" Y1="0"
+                    X2="150" Y2="0"
+                    Stroke="Silver"
+                    StrokeThickness="0.5"
+                    VerticalAlignment="Top"/>
+            </WrapPanel>
+
+        </StackPanel>
+
 
     </Grid>
 </UserControl>

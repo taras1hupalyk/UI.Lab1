@@ -17,9 +17,9 @@ namespace DDC.Client.MVVM.Model
         }
 
 
-        public CalculationResult Calculate(decimal debtAmount, decimal interestRate, int months)
+        public CalculationResult Calculate(decimal moneyAmount, decimal interestRate, int months)
         {
-            return _calculationMethod.Calculate(debtAmount, interestRate, months);
+            return _calculationMethod.Calculate(moneyAmount, interestRate, months);
         }
 
 
