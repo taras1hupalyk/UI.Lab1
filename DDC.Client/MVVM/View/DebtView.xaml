@@ -114,6 +114,8 @@
                 </Style>
                 <Style TargetType="{x:Type Label}">
                     <Setter Property="FontSize" Value="20"/>
+                    <Setter Property="ContentStringFormat" Value="{}{0:0.00}"/>
+
                 </Style>
             </StackPanel.Resources>
             <WrapPanel Orientation="Vertical">

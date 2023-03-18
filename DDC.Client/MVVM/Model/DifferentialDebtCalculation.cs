@@ -1,4 +1,5 @@
-﻿using DDC.Client.MVVM.Model.Interfaces;
+﻿using DDC.Client.MVVM.Model.DTOs;
+using DDC.Client.MVVM.Model.Interfaces;
 
 
 namespace DDC.Client.MVVM.Model

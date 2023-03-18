@@ -1,5 +1,8 @@
-﻿using DDC.Client.MVVM.Model.Interfaces;
+﻿using DDC.Client.MVVM.Model.DTOs;
+using DDC.Client.MVVM.Model.Interfaces;
 using System;
+using System.Collections.Generic;
+using System.Windows.Documents;
 
 namespace DDC.Client.MVVM.Model
 {
@@ -15,12 +18,30 @@ namespace DDC.Client.MVVM.Model
 
             var totalInterest = depositAmount * interestRate * depositTerm.Days / yearDaysAmount / 100;
 
+            var paymentHistory = new List<PaymentInfo>();
+            decimal monthlyPayment = totalInterest / months;
+            var currentBody = depositAmount;
+
+            for (int i = 0; i < months; i++)
+            {
+                paymentHistory.Add(new PaymentInfo
+                {
+                    MonthNumber = i + 1,
+                    Body = currentBody,
+                    MoneyChanges = monthlyPayment,
+                    CurrentTotal = currentBody + monthlyPayment
+                });
+
+                currentBody += monthlyPayment;
+            }
+
 
             var result = new CalculationResult
             {
-                MonthlyPayment = totalInterest / months,
+                MonthlyPayment = monthlyPayment,
                 TotalInterest = totalInterest,
-                TotalSum = depositAmount + totalInterest
+                TotalSum = depositAmount + totalInterest,
+                PaymentHistory = paymentHistory
             };
             return result;
         }

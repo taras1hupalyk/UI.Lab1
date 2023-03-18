@@ -23,6 +23,7 @@ namespace DDC.Client.MVVM.View
         public DepositView()
         {
             InitializeComponent();
+
         }
     }
 }

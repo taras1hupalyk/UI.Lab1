@@ -10,6 +10,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="theme\menubuttontheme.xaml"/>
                 <ResourceDictionary Source="theme\windowsbuttontheme.xaml"/>
+                <ResourceDictionary Source="theme\datagridtheme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
 
             <DataTemplate DataType="{x:Type viewModel:HomeViewModel}">
@@ -23,6 +24,7 @@
             <DataTemplate DataType="{x:Type viewModel:DepositViewModel}">
                 <view:DepositView/>
             </DataTemplate>
+            
 
         </ResourceDictionary>
     </Application.Resources>

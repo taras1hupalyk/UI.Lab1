@@ -1,7 +1,9 @@
 ﻿using DDC.Client.Core;
 using DDC.Client.MVVM.Model;
+using DDC.Client.MVVM.Model.DTOs;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -14,6 +16,19 @@ namespace DDC.Client.MVVM.ViewModel
     {
         public  RelayCommand CalculateCommand { get; set; }
         public RelayCommand ChooseMethodCommand { get; set; }
+
+        private ObservableCollection<PaymentInfo> _dataGridContent;
+        public ObservableCollection<PaymentInfo> DataGridContent 
+        { 
+            get => _dataGridContent;
+            set
+            {
+                _dataGridContent = value;
+                OnPropertyChanged();
+            }
+                 
+        }
+
 
         protected CalculationService _service;
         protected decimal _debtAmount;
@@ -98,6 +113,7 @@ namespace DDC.Client.MVVM.ViewModel
             this.MonthlyPayment = result.MonthlyPayment;
             this.TotalInterest = result.TotalInterest;
             this.TotalSum = result.TotalSum;
+            this.DataGridContent = new ObservableCollection<PaymentInfo>(result.PaymentHistory);
         }
 
         
