@@ -17,7 +17,7 @@ namespace DDC.Client.MVVM.ViewModel
         public  RelayCommand CalculateCommand { get; set; }
         public RelayCommand ChooseMethodCommand { get; set; }
 
-        private ObservableCollection<PaymentInfo> _dataGridContent;
+        protected ObservableCollection<PaymentInfo> _dataGridContent;
         public ObservableCollection<PaymentInfo> DataGridContent 
         { 
             get => _dataGridContent;
@@ -106,7 +106,7 @@ namespace DDC.Client.MVVM.ViewModel
 
         public abstract void ChooseCalculationMethod();
 
-        public void GetCalculationResults(object obj)
+        public virtual void GetCalculationResults(object obj)
         {
             var result = _service.Calculate(DebtAmount, InterestRate, Months);
 
