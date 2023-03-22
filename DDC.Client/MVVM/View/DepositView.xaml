@@ -42,7 +42,7 @@
 
                 <WrapPanel Orientation="Vertical">
                     <TextBlock Margin="0 7">Кількість коштів</TextBlock>
-                    <TextBox Text="{Binding DebtAmount}" >
+                    <TextBox Text="{Binding DebtAmount, ValidatesOnNotifyDataErrors=True}" >
                         <TextBox.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="3"/>
@@ -53,7 +53,7 @@
 
                 <WrapPanel Orientation="Vertical">
                     <TextBlock Margin="0 7">Відсоток</TextBlock>
-                    <TextBox Text="{Binding InterestRate}">
+                    <TextBox Text="{Binding InterestRate, ValidatesOnNotifyDataErrors=True}">
                         <TextBox.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="3"/>
@@ -64,7 +64,7 @@
 
                 <WrapPanel Orientation="Vertical">
                     <TextBlock Margin="0 7">Термін</TextBlock>
-                    <TextBox Text="{Binding Months}">
+                    <TextBox Text="{Binding Months, ValidatesOnNotifyDataErrors=True}">
                         <TextBox.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="3"/>
@@ -84,7 +84,9 @@
                     </ComboBox>
                 </WrapPanel>
 
-                <Button Command="{Binding CalculateCommand}" 
+                <Button x:Name="Creation_button"
+                    Command="{Binding CalculateCommand}" 
+                        IsEnabled="{Binding CanCreate}"
                     Width="100" Height="40"  
                     Margin="30 7"
                     Background="White"
@@ -183,6 +185,23 @@
                     Header="Total"
                     Width="*"
                     Binding="{Binding CurrentTotal, StringFormat={}{0:0.00}}"/>
+
+                <DataGridTemplateColumn Width="40">
+                    <DataGridTemplateColumn.HeaderTemplate>
+                        <DataTemplate  >
+                            <Button   Click="Button_Click" 
+                                      >
+                                <Image Source="/Images/save_image.png"
+                                       Height="25"
+                                       Width="25"
+                                       Stretch="Fill"/>
+                            </Button>
+                        </DataTemplate>
+
+                    </DataGridTemplateColumn.HeaderTemplate>
+
+
+                </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

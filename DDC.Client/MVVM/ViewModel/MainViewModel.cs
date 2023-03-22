@@ -55,9 +55,6 @@ namespace DDC.Client.MVVM.ViewModel
 
         }
 
-        public override string? ToString()
-        {
-            return "hello im a viewmodel, probably the main one and i will appear in the main window";
-        }
+        
     }
 }

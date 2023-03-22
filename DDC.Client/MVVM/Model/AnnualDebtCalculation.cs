@@ -42,7 +42,7 @@ namespace DDC.Client.MVVM.Model
                 {
                     Body = currentBody,
                     MoneyChanges = monthlyPayment,
-                    CurrentTotal = currentBody - monthlyPayment,
+                    CurrentTotal = currentBody - monthlyPayment + percentagePaymentPart,
                     PercentagePaymentPart = percentagePaymentPart,
                     AnnualPaymentPart = anunualPaymentPart,
                     MonthNumber = i + 1
