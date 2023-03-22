@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows;
 using System.Windows.Input;
 
 namespace DDC.Client.Core
@@ -27,7 +28,17 @@ namespace DDC.Client.Core
 
         public void Execute(object? parameter)
         {
-            _execute(parameter);
+            try
+            {
+
+                _execute(parameter);
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                
+            }
         }
     }
 }

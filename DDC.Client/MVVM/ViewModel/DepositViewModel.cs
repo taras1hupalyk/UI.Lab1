@@ -1,7 +1,9 @@
 ﻿using DDC.Client.Core;
 using DDC.Client.MVVM.Model;
+using DDC.Client.MVVM.Model.DTOs;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +16,15 @@ namespace DDC.Client.MVVM.ViewModel
         {
             CalculateCommand = new RelayCommand(new Action<object>(GetCalculationResults));
             _service = new CalculationService();
+            _errorsViewModel.ErrorsChanged += ErrorsViewModel_ErrorsChanged;
+
+            _errorsViewModel.ValidateNumeric(nameof(DebtAmount), DebtAmount);
+            _errorsViewModel.ValidateNumeric(nameof(InterestRate), InterestRate);
+            _errorsViewModel.ValidateNumeric(nameof(Months), Months);
+
+            IsCalculatinMethodSelected = false;
+
+
         }
 
 
@@ -31,6 +42,16 @@ namespace DDC.Client.MVVM.ViewModel
                 default:
                     break;
             }
+
+            IsCalculatinMethodSelected = true;
+            OnPropertyChanged();
+
+        }
+
+
+        public override string ToString()
+        {
+            return "Deposit";
         }
     }
 }

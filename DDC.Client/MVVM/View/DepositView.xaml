@@ -4,7 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:DDC.Client.MVVM.View"
-             xmlns:viewmodel="clr-namespace:DDC.Client.MVVM.ViewModel"              
+             xmlns:viewmodel="clr-namespace:DDC.Client.MVVM.ViewModel"         
+             
              d:DataContext="{d:DesignInstance Type=viewmodel:DepositViewModel}"             
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="720"
@@ -41,7 +42,7 @@
 
                 <WrapPanel Orientation="Vertical">
                     <TextBlock Margin="0 7">Кількість коштів</TextBlock>
-                    <TextBox Text="{Binding DebtAmount}" >
+                    <TextBox Text="{Binding DebtAmount, ValidatesOnNotifyDataErrors=True}" >
                         <TextBox.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="3"/>
@@ -52,7 +53,7 @@
 
                 <WrapPanel Orientation="Vertical">
                     <TextBlock Margin="0 7">Відсоток</TextBlock>
-                    <TextBox Text="{Binding InterestRate}">
+                    <TextBox Text="{Binding InterestRate, ValidatesOnNotifyDataErrors=True}">
                         <TextBox.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="3"/>
@@ -63,7 +64,7 @@
 
                 <WrapPanel Orientation="Vertical">
                     <TextBlock Margin="0 7">Термін</TextBlock>
-                    <TextBox Text="{Binding Months}">
+                    <TextBox Text="{Binding Months, ValidatesOnNotifyDataErrors=True}">
                         <TextBox.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="3"/>
@@ -83,7 +84,9 @@
                     </ComboBox>
                 </WrapPanel>
 
-                <Button Command="{Binding CalculateCommand}" 
+                <Button x:Name="Creation_button"
+                    Command="{Binding CalculateCommand}" 
+                        IsEnabled="{Binding CanCreate}"
                     Width="100" Height="40"  
                     Margin="30 7"
                     Background="White"
@@ -105,8 +108,8 @@
         <StackPanel Orientation="Vertical"
                     Grid.ColumnSpan="2"
                     Grid.Row="2"
-                    HorizontalAlignment="Center"
-                    Margin="0,10,0,40">
+                    HorizontalAlignment="Left"
+                    Margin="35,0,0,40">
 
             <StackPanel.Resources>
                 <Style TargetType="{x:Type WrapPanel}">
@@ -114,6 +117,7 @@
                 </Style>
                 <Style TargetType="{x:Type Label}">
                     <Setter Property="FontSize" Value="20"/>
+                    <Setter Property="ContentStringFormat" Value="{}{0:0.00}"/>
                 </Style>
             </StackPanel.Resources>
             <WrapPanel Orientation="Vertical">
@@ -153,5 +157,52 @@
         </StackPanel>
 
 
+
+
+        <DataGrid
+                  Grid.Row="3"
+                  Grid.Column="2"
+                  Grid.ColumnSpan="3"
+                  Margin="-20 40 30 30" 
+                  ItemsSource="{Binding DataGridContent}"
+             AutoGenerateColumns="False"
+                  >
+
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Month"
+                                    Width="45"
+                                    Binding="{Binding MonthNumber}"/>
+                <DataGridTextColumn 
+                    Header="Deposit Body"
+                    Width="*"
+                    Binding="{Binding Body, StringFormat={}{0:0.00}}"/>
+                <DataGridTextColumn 
+                    Header="Monthly interest"
+                    Width="*"
+                    Binding="{Binding MoneyChanges, StringFormat={}{0:0.00}}"/>
+                <DataGridTextColumn 
+                    Header="Total"
+                    Width="*"
+                    Binding="{Binding CurrentTotal, StringFormat={}{0:0.00}}"/>
+
+                <DataGridTemplateColumn Width="40">
+                    <DataGridTemplateColumn.HeaderTemplate>
+                        <DataTemplate  >
+                            <Button   Click="Button_Click" 
+                                      >
+                                <Image Source="/Images/save_image.png"
+                                       Height="25"
+                                       Width="25"
+                                       Stretch="Fill"/>
+                            </Button>
+                        </DataTemplate>
+
+                    </DataGridTemplateColumn.HeaderTemplate>
+
+
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </UserControl>
