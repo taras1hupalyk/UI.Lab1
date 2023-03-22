@@ -9,15 +9,16 @@
 
   <ItemGroup>
     <None Remove="Images\OIP.png" />
+    <None Remove="Images\save_image.png" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Fonts\" />
-    <Folder Include="MVVM\Model\" />
   </ItemGroup>
 
   <ItemGroup>
     <Resource Include="Images\OIP.png" />
+    <Resource Include="Images\save_image.png" />
   </ItemGroup>
 
 </Project>
