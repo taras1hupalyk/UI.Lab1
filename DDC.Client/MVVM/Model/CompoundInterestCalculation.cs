@@ -31,7 +31,7 @@ namespace DDC.Client.MVVM.Model
 
             return new CalculationResult
             {
-                MonthlyPayment = currentSum / months,
+                MonthlyPayment = (currentSum -moneyAmount) / months,
                 TotalInterest = currentSum - moneyAmount,
                 PaymentHistory = paymentHistory,
                 TotalSum = currentSum

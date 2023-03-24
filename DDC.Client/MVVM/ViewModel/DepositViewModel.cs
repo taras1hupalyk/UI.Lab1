@@ -32,10 +32,10 @@ namespace DDC.Client.MVVM.ViewModel
         {
             switch (CalculationMethod)
             {
-                case "System.Windows.Controls.ComboBoxItem: Прості відсотки":
+                case "System.Windows.Controls.ComboBoxItem: Simple Interest":
                     _service.SetCalculationMethod(new SimpleInterestCalculation());
                     break;
-                case "System.Windows.Controls.ComboBoxItem: Складні відсотки":
+                case "System.Windows.Controls.ComboBoxItem: Compound Interest":
                     _service.SetCalculationMethod(new CompoundInterestCalculation());
                     break;
 

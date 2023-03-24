@@ -33,10 +33,10 @@ namespace DDC.Client.MVVM.ViewModel
         {
             switch (CalculationMethod)
             {
-                case "System.Windows.Controls.ComboBoxItem: Аннуітетний":
+                case "System.Windows.Controls.ComboBoxItem: Annual":
                     _service.SetCalculationMethod(new AnnualDebtCalculation());
                     break;
-                case "System.Windows.Controls.ComboBoxItem: Диференційований":
+                case "System.Windows.Controls.ComboBoxItem: Differential":
                     _service.SetCalculationMethod(new DifferentialDebtCalculation());
                     break;
 

@@ -40,7 +40,7 @@
                 </StackPanel.Resources>
 
                 <WrapPanel Orientation="Vertical">
-                    <TextBlock Margin="0 7">Кількість коштів</TextBlock>
+                    <TextBlock Margin="0 7">Money Amount</TextBlock>
                     <TextBox Text="{Binding DebtAmount, ValidatesOnNotifyDataErrors=True}" >
                         <TextBox.Resources>
                             <Style TargetType="Border">
@@ -51,7 +51,7 @@
                 </WrapPanel>
 
                 <WrapPanel Orientation="Vertical">
-                    <TextBlock Margin="0 7">Відсоток</TextBlock>
+                    <TextBlock Margin="0 7">Interest</TextBlock>
                     <TextBox Text="{Binding InterestRate, ValidatesOnNotifyDataErrors=True}">
                         <TextBox.Resources>
                             <Style TargetType="Border">
@@ -62,7 +62,7 @@
                 </WrapPanel>
 
                 <WrapPanel Orientation="Vertical">
-                    <TextBlock Margin="0 7">Термін</TextBlock>
+                    <TextBlock Margin="0 7">Months</TextBlock>
                     <TextBox Text="{Binding Months, ValidatesOnNotifyDataErrors=True}">
                         <TextBox.Resources>
                             <Style TargetType="Border">
@@ -78,8 +78,8 @@
                            SelectedIndex="0"
                            SelectedItem="{Binding CalculationMethod}"
                            Width="100">
-                        <ComboBoxItem >Аннуітетний</ComboBoxItem>
-                        <ComboBoxItem>Диференційований</ComboBoxItem>
+                        <ComboBoxItem >Annual</ComboBoxItem>
+                        <ComboBoxItem>Differential</ComboBoxItem>
                     </ComboBox>
                 </WrapPanel>
 
@@ -132,7 +132,7 @@
             </WrapPanel>
 
             <WrapPanel Orientation="Vertical">
-                <Label>За відсотками</Label>
+                <Label>Total Interest</Label>
                 <Label Content="{Binding TotalInterest}"></Label>
                 <Line
                     X1="0" Y1="0"
