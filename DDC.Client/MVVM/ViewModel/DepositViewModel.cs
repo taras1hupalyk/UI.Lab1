@@ -1,6 +1,7 @@
 ﻿using DDC.Client.Core;
 using DDC.Client.MVVM.Model;
 using DDC.Client.MVVM.Model.DTOs;
+using DDC.Client.MVVM.Model.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;

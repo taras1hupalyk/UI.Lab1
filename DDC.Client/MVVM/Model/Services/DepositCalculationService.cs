@@ -6,22 +6,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DDC.Client.MVVM.Model
+namespace DDC.Client.MVVM.Model.Services
 {
-    public class DebtCalculationService
+    class DepositCalculationService
     {
-        private IDebtCalculation _calculationMethod;
+        private IDepositCalculation _calculationMethod;
 
-        public void SetCalculationMethod(IDebtCalculation calculationMethod)
+        public void SetCalculationMethod(IDepositCalculation calculationMethod)
         {
             _calculationMethod = calculationMethod;
         }
 
 
-        public DebtCalculationResult Calculate(decimal moneyAmount, decimal interestRate, int months)
+        public DepositCalculationResult Calculate(decimal moneyAmount, decimal interestRate, int months)
         {
             return _calculationMethod.Calculate(moneyAmount, interestRate, months);
         }
+
+
 
     }
 }

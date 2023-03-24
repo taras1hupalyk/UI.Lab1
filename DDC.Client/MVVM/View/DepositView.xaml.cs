@@ -38,7 +38,7 @@ namespace DDC.Client.MVVM.View
                     throw new ArgumentNullException("Please, make sure you have done the calculation");
                 }
                 var tableHeaders = String.Format("| {0,-10} | {1,-10} | {2,-10} |  {3, -10}",
-                    "Month", "Deposit Body", "Monthly Interest", "Total");
+                    "Month", "Body", "Monthly Interest", "Total");
                 vm.SaveToFile(vm.DataGridContent.Select(x => x as PaymentInfo).ToList(), tableHeaders);
 
             }
