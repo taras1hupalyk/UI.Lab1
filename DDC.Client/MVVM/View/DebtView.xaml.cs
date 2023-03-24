@@ -1,4 +1,5 @@
-﻿using DDC.Client.MVVM.ViewModel;
+﻿using DDC.Client.MVVM.Model.DTOs;
+using DDC.Client.MVVM.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,7 +33,15 @@ namespace DDC.Client.MVVM.View
             try
             {
                 var vm = DataContext as DebtViewModel;
-                vm.SaveToFile();
+                
+                if (vm.DataGridContent == null)
+                {
+                    throw new ArgumentNullException("Please, make sure you have done the calculation");
+                }
+
+                var tableHeaders = String.Format("| {0,-10} | {1,-10} | {2,-10} |  {3, -10}  | {4,-10} | {5,-10} | ", 
+                                "Month", "Debt Body", "Monthly payment", "Percentage", "Annual", "Total" );
+                vm.SaveToFile(vm.DataGridContent.Select(x => x as PaymentInfo).ToList(), tableHeaders);
             }
             catch (ArgumentNullException ex)
             {

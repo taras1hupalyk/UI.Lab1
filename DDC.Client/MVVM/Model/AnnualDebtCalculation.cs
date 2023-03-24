@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace DDC.Client.MVVM.Model
 {
-    class AnnualDebtCalculation : IBankingCalculation 
+    class AnnualDebtCalculation : IDebtCalculation 
     {
-        public CalculationResult Calculate(decimal debtAmount, decimal interestRate, int months)
+        public DebtCalculationResult Calculate(decimal debtAmount, decimal interestRate, int months)
         {
             decimal monthlyInterestRate = interestRate / 100 / 12;
             decimal monthlyPayment = debtAmount * (monthlyInterestRate + (monthlyInterestRate / ((decimal)Math.Pow((double)(1 + monthlyInterestRate), months) - 1)));
@@ -20,7 +20,7 @@ namespace DDC.Client.MVVM.Model
             
             var paymentHistory = GetPaymentHistory(debtAmount, months, monthlyInterestRate, monthlyPayment);
 
-            return new CalculationResult
+            return new DebtCalculationResult
             {
                 MonthlyPayment = monthlyPayment,
                 TotalInterest = totalInterest,
@@ -30,10 +30,10 @@ namespace DDC.Client.MVVM.Model
             };
         }
 
-        private static List<PaymentInfo> GetPaymentHistory(decimal debtAmount, int months, decimal monthlyInterestRate, decimal monthlyPayment)
+        private static List<DebtPaymentInfo> GetPaymentHistory(decimal debtAmount, int months, decimal monthlyInterestRate, decimal monthlyPayment)
         {
             var currentBody = debtAmount;
-            var paymentHistory = new List<PaymentInfo>();
+            var paymentHistory = new List<DebtPaymentInfo>();
             for (int i = 0; i < months; i++)
             {
                 var percentagePaymentPart = currentBody * monthlyInterestRate;
