@@ -7,11 +7,8 @@ using System.Threading.Tasks;
 
 namespace DDC.Client.MVVM.Model.DTOs
 {
-    class CalculationResult
+    public class CalculationResult
     {
-        public List<PaymentInfo> PaymentHistory { get; set; }
-
-
         public decimal MonthlyPayment { get; set; }
 
         public decimal TotalInterest { get; set; }

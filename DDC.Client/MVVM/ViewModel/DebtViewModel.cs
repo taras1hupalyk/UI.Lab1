@@ -1,6 +1,7 @@
 ﻿using DDC.Client.Core;
 using DDC.Client.MVVM.Model;
 using DDC.Client.MVVM.Model.DTOs;
+using DDC.Client.MVVM.Model.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -13,12 +14,15 @@ namespace DDC.Client.MVVM.ViewModel
 {
     class DebtViewModel : BankingViewModel
     {
-     
+
+        protected DebtCalculationService _service;
+
+
 
         public DebtViewModel()
         {
             CalculateCommand = new RelayCommand(new Action<object>(GetCalculationResults));
-            _service = new CalculationService();
+            _service = new DebtCalculationService();
             _errorsViewModel.ErrorsChanged += ErrorsViewModel_ErrorsChanged;
 
             _errorsViewModel.ValidateNumeric(nameof(DebtAmount), DebtAmount);
@@ -27,6 +31,28 @@ namespace DDC.Client.MVVM.ViewModel
             
             IsCalculatinMethodSelected = false;
 
+        }
+
+        protected ObservableCollection<DebtPaymentInfo> _dataGridContent;
+        public virtual ObservableCollection<DebtPaymentInfo> DataGridContent
+        {
+            get => _dataGridContent;
+            set
+            {
+                _dataGridContent = value;
+                OnPropertyChanged();
+            }
+        }
+
+
+        public virtual void GetCalculationResults(object obj)
+        {
+            var result = _service.Calculate(decimal.Parse(DebtAmount), decimal.Parse(InterestRate), int.Parse(Months));
+
+            this.MonthlyPayment = result.MonthlyPayment;
+            this.TotalInterest = result.TotalInterest;
+            this.TotalSum = result.TotalSum;
+            this.DataGridContent = new ObservableCollection<DebtPaymentInfo>(result.PaymentHistory);
         }
 
         public override void  ChooseCalculationMethod()

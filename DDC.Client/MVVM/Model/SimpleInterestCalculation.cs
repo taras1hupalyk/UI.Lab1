@@ -6,9 +6,9 @@ using System.Windows.Documents;
 
 namespace DDC.Client.MVVM.Model
 {
-    internal class SimpleInterestCalculation : IBankingCalculation
+    internal class SimpleInterestCalculation : IDepositCalculation
     {
-        public CalculationResult Calculate(decimal depositAmount, decimal interestRate, int months)
+        public DepositCalculationResult Calculate(decimal depositAmount, decimal interestRate, int months)
         {
             var depositStartingTime = DateTime.Now;
             var depositEndingTime = DateTime.Now.AddMonths(months);
@@ -36,7 +36,7 @@ namespace DDC.Client.MVVM.Model
             }
 
 
-            var result = new CalculationResult
+            var result = new DepositCalculationResult
             {
                 MonthlyPayment = monthlyPayment,
                 TotalInterest = totalInterest,

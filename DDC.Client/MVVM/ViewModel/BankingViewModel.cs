@@ -21,16 +21,7 @@ namespace DDC.Client.MVVM.ViewModel
         public RelayCommand CalculateCommand { get; set; }
         public RelayCommand ChooseMethodCommand { get; set; }
 
-        protected ObservableCollection<PaymentInfo> _dataGridContent;
-        public ObservableCollection<PaymentInfo> DataGridContent
-        {
-            get => _dataGridContent;
-            set
-            {
-                _dataGridContent = value;
-                OnPropertyChanged();
-            }
-        }
+        
 
 
         protected readonly ErrorsViewModel _errorsViewModel = new();
@@ -51,7 +42,6 @@ namespace DDC.Client.MVVM.ViewModel
 
 
 
-        protected CalculationService _service;
         protected string _debtAmount;
 
         public string DebtAmount
@@ -159,28 +149,10 @@ namespace DDC.Client.MVVM.ViewModel
 
         public abstract void ChooseCalculationMethod();
 
-        public virtual void GetCalculationResults(object obj)
+        
+
+        public virtual void SaveToFile(List<PaymentInfo> data, string tableHeaders)
         {
-            var result = _service.Calculate(decimal.Parse(DebtAmount), decimal.Parse(InterestRate), int.Parse(Months));
-
-            this.MonthlyPayment = result.MonthlyPayment;
-            this.TotalInterest = result.TotalInterest;
-            this.TotalSum = result.TotalSum;
-            this.DataGridContent = new ObservableCollection<PaymentInfo>(result.PaymentHistory);
-        }
-
-        public virtual void SaveToFile()
-        {
-
-
-            var data = this.DataGridContent;
-
-            if (data == null)
-            {
-                throw new ArgumentNullException("Please, make sure you have done the calculation");
-            }
-
-
             string fileName = this.ToString() + " " + DateTime.Now.ToShortDateString() + "-" + DateTime.Now.AddMonths(int.Parse(Months)).ToShortDateString() + ".txt";
             using var sw = new StreamWriter(fileName);
 
@@ -191,6 +163,7 @@ namespace DDC.Client.MVVM.ViewModel
             sw.WriteLine("Total interest: " + this.TotalInterest.ToString("F2"));
             sw.WriteLine("Total sum: " + this.TotalSum.ToString("F2"));
             sw.WriteLine("Payment history: ");
+            sw.WriteLine(tableHeaders);
 
             foreach (var item in data)
             {
@@ -199,8 +172,6 @@ namespace DDC.Client.MVVM.ViewModel
             sw.Close();
 
             MessageBox.Show("File saved successfully", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
-
-
 
 
 
