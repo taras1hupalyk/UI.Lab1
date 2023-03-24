@@ -24,7 +24,7 @@
                     <Border.Background>
                         <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
                             <GradientStop Color="#efefef" Offset="0.0"/>
-                            <GradientStop Color="#a6a6a6" Offset="1"/>
+                            <GradientStop Color="#809fec" Offset="1"/>
                         </LinearGradientBrush>
                     </Border.Background>
                     <Border.Clip>
@@ -58,16 +58,19 @@
                     Width="200"
                     Height="250"
                     Margin="10 20 0 0 "
+                    BorderBrush="#a6baed"
+                    BorderThickness="1"
                     >
                     <Border.Background>
                         <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
-                            <GradientStop Color="#efefef" Offset="0.0"/>
-                            <GradientStop Color="#a6a6a6" Offset="1"/>
+                            <GradientStop Color="#ffffff" Offset="0.0"/>
+                            <GradientStop Color="#efefef" Offset="1"/>
+                            
                         </LinearGradientBrush>
                     </Border.Background>
                     <Border.Clip>
-                        <RectangleGeometry RadiusX="10"
-                                       RadiusY="10"
+                        <RectangleGeometry RadiusX="7"
+                                       RadiusY="7"
                                        Rect="0 0 200 250"/>
 
                     </Border.Clip>
@@ -95,8 +98,8 @@
                             <TextBlock 
                             Margin="20 0"
                             FontSize="20">Deposit calculation:</TextBlock>
-                            <TextBlock Margin="40 2" FontSize= "18" Text="Simple Interest"/>
-                            <TextBlock Margin="40 2" FontSize="18"  Text="Compound Interest"/>
+                            <TextBlock Margin="40 2" FontSize= "18" Text="Simple"/>
+                            <TextBlock Margin="40 2" FontSize="18"  Text="Compound"/>
 
 
                         </StackPanel>
