@@ -5,172 +5,261 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:DDC.Client.MVVM.View"
              mc:Ignorable="d" 
-             d:DesignHeight="600" d:DesignWidth="720">
-    <StackPanel>
-        <TextBlock Text="Discover"
-                   Foreground="White"
-                   FontSize="28"
-                   HorizontalAlignment="Left"
-                   Margin="0,0,0,20"
-                   />
-        <StackPanel Orientation="Horizontal"
-                    >
-            <Border Width="400"
-                    Height="200"
-                    Margin="20 0 0 0"
-                    >
-                <Border.Background>
-                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
-                        <GradientStop Color="#5bc3ff" Offset="0.0"/>
-                        <GradientStop Color="#3aa0ff" Offset="1"/>
-                    </LinearGradientBrush>
-                </Border.Background>
-                <Border.Clip>
-                    <RectangleGeometry RadiusX="10"
-                                       RadiusY="10"
-                                       Rect="0 0 400 200"/>
+             d:DesignHeight="1700" d:DesignWidth="720"
+             Background="White">
 
-                </Border.Clip>
+    <ScrollViewer Margin="0 5">
 
-                <Grid>
-                    <StackPanel>
-                        <TextBlock Text="Some Text &#x0a; and Some More Text" 
-                                   Foreground="White"
-                                   FontSize="28"
-                                   Margin="20 10 10 0"/>
 
-                        <TextBlock Text="Text, Black Text Bolts&#x0a; and some more text" 
-                                   Foreground="White"
-                                   FontSize="28"
-                                   Margin="20 10 10 0"/>
-                    </StackPanel>
-                    <Image Height="89" Source="/Images/OIP.png" Stretch="Fill" Width="90" Margin="315,119,-5,-8" AutomationProperties.Name="BaltBIgBlack"/>
-                </Grid>
-
-            </Border>
-
-            <Border Width="200"
-                    Height="200"
-                    Margin="45 0 0 0 "
-                    >
-                <Border.Background>
-                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
-                        <GradientStop Color="#ffc554" Offset="0.0"/>
-                        <GradientStop Color="Orange" Offset="1"/>
-                    </LinearGradientBrush>
-                </Border.Background>
-                <Border.Clip>
-                    <RectangleGeometry RadiusX="10"
-                                       RadiusY="10"
-                                       Rect="0 0 200 200"/>
-
-                </Border.Clip>
-
-                <Grid>
-                    <StackPanel>
-
-                    </StackPanel>
-                </Grid>
-
-            </Border>
-        </StackPanel>
 
 
         <StackPanel>
-            <TextBlock Text="Most Watched"
-                       Foreground="White"
-                       FontSize="20"
-                       HorizontalAlignment="Left"
-                       Margin="0 0 0 10"/>
-            <StackPanel Orientation="Horizontal">
-                <Border Width="150"
-                    Height="150"
-                    Margin="20 0 0 0 "
+
+            <StackPanel Orientation="Horizontal"
+                    >
+                <Border Width="450"
+                    Height="300"
+                    Margin="20 20 0 0"
                     >
                     <Border.Background>
                         <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
-                            <GradientStop Color="#ffc554" Offset="0.0"/>
-                            <GradientStop Color="Orange" Offset="1"/>
+                            <GradientStop Color="#efefef" Offset="0.0"/>
+                            <GradientStop Color="#a6a6a6" Offset="1"/>
                         </LinearGradientBrush>
                     </Border.Background>
                     <Border.Clip>
                         <RectangleGeometry RadiusX="10"
                                        RadiusY="10"
-                                       Rect="0 0 150 150"/>
+                                       Rect="0 0 450 300"/>
 
                     </Border.Clip>
 
+                    <Grid >
+                        <StackPanel HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                >
+                            <TextBlock Width="390"
+                                   TextWrapping="Wrap"
+                            Text="This Calculator is a tool that helps you calculate debt and deposit amounts your financial goals.
+                                   It allows you to save your calculations to a file and easily adjust input values to see how they affect your finances. Use it to make informed financial decisions and take control of your finances."
+                                   Foreground="Black"
+                                   FontSize="25"
+                                   Margin="0"/>
 
+
+                        </StackPanel>
+                    </Grid>
 
                 </Border>
-                <Border Width="150"
-                    Height="150"
-                    Margin="15 0 0 0 "
+
+                <Border 
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Right"
+                    Width="200"
+                    Height="250"
+                    Margin="10 20 0 0 "
                     >
                     <Border.Background>
                         <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
-                            <GradientStop Color="#ffc554" Offset="0.0"/>
-                            <GradientStop Color="Orange" Offset="1"/>
+                            <GradientStop Color="#efefef" Offset="0.0"/>
+                            <GradientStop Color="#a6a6a6" Offset="1"/>
                         </LinearGradientBrush>
                     </Border.Background>
                     <Border.Clip>
                         <RectangleGeometry RadiusX="10"
                                        RadiusY="10"
-                                       Rect="0 0 150 150"/>
+                                       Rect="0 0 200 250"/>
 
                     </Border.Clip>
 
+                    <Grid>
+                        <StackPanel>
+                            <StackPanel.Resources>
+                                <Style TargetType="{x:Type TextBlock}">
+                                    <Setter Property="FontWeight" Value="Light"/>
+                                </Style>
+                            </StackPanel.Resources>
 
+
+                            <TextBlock
+                            HorizontalAlignment="Center"
+                            FontSize="22"
+                            FontWeight="Normal"
+                            Margin="0 15 0 0">App Map</TextBlock>
+                            <TextBlock 
+                            Margin="20 0"
+                            FontSize="20">Debt calculation:</TextBlock>
+                            <TextBlock Margin="40 2" FontSize= "18" Text="Annual"/>
+                            <TextBlock Margin="40 2" FontSize="18"  Text="Differential"/>
+
+                            <TextBlock 
+                            Margin="20 0"
+                            FontSize="20">Deposit calculation:</TextBlock>
+                            <TextBlock Margin="40 2" FontSize= "18" Text="Simple Interest"/>
+                            <TextBlock Margin="40 2" FontSize="18"  Text="Compound Interest"/>
+
+
+                        </StackPanel>
+                        <TextBlock VerticalAlignment="Bottom" TextWrapping="Wrap" Margin="3" FontSize="14"  Text="*You can read about it more below"/>
+                    </Grid>
 
                 </Border>
-                <Border Width="150"
-                    Height="150"
-                    Margin="15 0 0 0 "
+            </StackPanel>
+
+
+
+            <StackPanel Orientation="Vertical"
+                        Margin="0 20">
+                <StackPanel.Resources>
+                    <Style TargetType="{x:Type TextBlock}">
+                        <Setter Property="TextWrapping" Value="Wrap"/>
+                        <Setter Property="Margin" Value="10 0"/>
+                        <Setter Property="FontSize" Value="18"/>
+                        <Setter Property="FontWeight" Value="Light"/>
+
+                    </Style>
+                </StackPanel.Resources>
+                <Border 
+                    Width="600"
+                    Height="300"
+                    Margin="20 20 0 0 "
+                    HorizontalAlignment="Left"
+                        
                     >
                     <Border.Background>
                         <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
-                            <GradientStop Color="#ffc554" Offset="0.0"/>
-                            <GradientStop Color="Orange" Offset="1"/>
+                            <GradientStop Color="#efefef" Offset="0.0"/>
+                            <GradientStop Color="#a6a6a6" Offset="1"/>
                         </LinearGradientBrush>
                     </Border.Background>
                     <Border.Clip>
-                        <RectangleGeometry RadiusX="10"
-                                       RadiusY="10"
-                                       Rect="0 0 150 150"/>
+                        <RectangleGeometry RadiusX="20"
+                                       RadiusY="20"
+                                       Rect="0 0 600 300"/>
 
                     </Border.Clip>
 
+                    <StackPanel>
+                        
+                         <TextBlock Text="Annual Debt Calculation" 
+                                    Margin="0 10 0 0" 
+                                    FontSize="20" 
+                                    HorizontalAlignment="Center"
+                                    FontWeight="Normal"/>
 
+                         <TextBlock >With the annuity method of calculation, the principal portion of the payment is divided into unequal parts: the smallest amount is at the beginning of the term, while the largest is at the end. The interest rate is also applied to the remaining loan balance. This means that the share of the loan (the loan amount) in the monthly payment will increase, while the share of interest will decrease. At the same time, the size of the annuity payment remains unchanged  &#x0a; The annuity method is more understandable for borrowers and is more commonly used by banks. Firstly, it is easier to calculate the bank's reward using its formulas, and secondly, the borrower pays the same amount every time.</TextBlock>
+                    </StackPanel>
 
                 </Border>
-                <Border Width="150"
-                    Height="150"
-                    Margin="15 0 0 0 "
+
+
+                <Border Width="600"
+                    Height="300"
+                    Margin="30 20 0 0 "
+                        HorizontalAlignment="Right"
                     >
                     <Border.Background>
                         <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
-                            <GradientStop Color="#ffc554" Offset="0.0"/>
-                            <GradientStop Color="Orange" Offset="1"/>
+                            <GradientStop Color="#efefef" Offset="0.0"/>
+                            <GradientStop Color="#a6a6a6" Offset="1"/>
                         </LinearGradientBrush>
                     </Border.Background>
                     <Border.Clip>
-                        <RectangleGeometry RadiusX="10"
-                                       RadiusY="10"
-                                       Rect="0 0 150 150"/>
+                        <RectangleGeometry RadiusX="20"
+                                       RadiusY="20"
+                                       Rect="0 0 600 300"/>
 
                     </Border.Clip>
+                    <StackPanel>
+
+                        <TextBlock 
+                            Text="Differential Debt Calculation" 
+                            Margin="0 10 0 0" 
+                            FontSize="20" 
+                            HorizontalAlignment="Center"
+                            FontWeight="Normal"/>
+                        <TextBlock TextWrapping="Wrap" Margin="10" >The amount of the loan, or the loan principal, is evenly divided over the entire term, while the interest is calculated monthly on the remaining loan balance. It is logical that the largest payments will be immediately after receiving the loan, but they will decrease every month. Due to this feature of the monthly loan payment, the amounts in the schedule are reflected as unequal values.</TextBlock>
 
 
+                    </StackPanel>
 
                 </Border>
 
+                <Border Width="600"
+                    Height="350"
+                    Margin="30 20 0 0 "
+                        HorizontalAlignment="Left"
+                    >
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
+                            <GradientStop Color="#efefef" Offset="0.0"/>
+                            <GradientStop Color="#a6a6a6" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <Border.Clip>
+                        <RectangleGeometry RadiusX="20"
+                                       RadiusY="20"
+                                       Rect="0 0 600 350"/>
+
+                    </Border.Clip>
+                    <StackPanel>
+
+                        <TextBlock 
+                            Text="Simple Interest Deposit Calculation" 
+                            Margin="0 10 0 0" 
+                            FontSize="20" 
+                            HorizontalAlignment="Center"
+                            FontWeight="Normal"/>
+                        <TextBlock TextWrapping="Wrap" Margin="10" >Simple interest is the reward that is accrued on the initial deposit amount for a certain period. Simple interest is not added to the deposit amount and is paid either at the end of the contract period or once a month or year according to the depositor's choice. If the contract is renewed for a new period, the profit from the previous period is not added to the deposit.
+This method of calculation is usually applied to deposits that allow both additions and withdrawals. The interest rate in this case is lower than when compound interest is applied. This is because your deposit is a financial instrument for the bank to generate profit. The less certain it is that you will not withdraw the money before the end of the term, the lower the probability of long-term capital investment by the bank, and therefore the lower the income.</TextBlock>
+
+
+                    </StackPanel>
+
+                </Border>
+
+                <Border Width="600"
+                    Height="300"
+                    Margin="30 20 0 0 "
+                        HorizontalAlignment="Right"
+                    >
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
+                            <GradientStop Color="#efefef" Offset="0.0"/>
+                            <GradientStop Color="#a6a6a6" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <Border.Clip>
+                        <RectangleGeometry RadiusX="20"
+                                       RadiusY="20"
+                                       Rect="0 0 600 300"/>
+
+                    </Border.Clip>
+                    <StackPanel>
+
+                        <TextBlock 
+                            Text="Compound Deposit Calculation" 
+                            Margin="0 10 0 0" 
+                            FontSize="20" 
+                            HorizontalAlignment="Center"
+                            FontWeight="Normal"/>
+                        <TextBlock TextWrapping="Wrap" Margin="10" >In this case, the income for the specified period is added to the deposit amount. In the next period, the reward is already calculated based on the increased deposit amount. The deposit amount gradually grows due to accumulated interest, resulting in a higher total income.
+Capitalization period is the frequency at which the interest is added to the current deposit balance. Banks add interest monthly, quarterly, or daily. You may be offered a deposit with floating rates, where the interest rate increases over time. Typically, the interest rate increases with an increase in the term of deposit, provided that there have been no withdrawals.</TextBlock>
+
+
+                    </StackPanel>
+
+                </Border>
             </StackPanel>
 
 
 
 
 
+
+
         </StackPanel>
 
-    </StackPanel>
+
+    </ScrollViewer>
 </UserControl>
