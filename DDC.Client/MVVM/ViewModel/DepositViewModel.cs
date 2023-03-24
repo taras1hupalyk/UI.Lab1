@@ -12,10 +12,12 @@ namespace DDC.Client.MVVM.ViewModel
 {
     internal class DepositViewModel : BankingViewModel
     {
+        private DepositCalculationService _service;
+
         public DepositViewModel()
         {
             CalculateCommand = new RelayCommand(new Action<object>(GetCalculationResults));
-            _service = new CalculationService();
+            _service = new DepositCalculationService();
             _errorsViewModel.ErrorsChanged += ErrorsViewModel_ErrorsChanged;
 
             _errorsViewModel.ValidateNumeric(nameof(DebtAmount), DebtAmount);
@@ -25,6 +27,26 @@ namespace DDC.Client.MVVM.ViewModel
             IsCalculatinMethodSelected = false;
 
 
+        }
+        protected ObservableCollection<PaymentInfo> _dataGridContent;
+        public virtual ObservableCollection<PaymentInfo> DataGridContent
+        {
+            get => _dataGridContent;
+            set
+            {
+                _dataGridContent = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public  void GetCalculationResults(object obj)
+        {
+            var result = _service.Calculate(decimal.Parse(DebtAmount), decimal.Parse(InterestRate), int.Parse(Months));
+
+            this.MonthlyPayment = result.MonthlyPayment;
+            this.TotalInterest = result.TotalInterest;
+            this.TotalSum = result.TotalSum;
+            this.DataGridContent = new ObservableCollection<PaymentInfo>(result.PaymentHistory);
         }
 
 

@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace DDC.Client.MVVM.Model.Interfaces
 {
-    interface IBankingCalculation
+    public interface IDebtCalculation
     {
-
-
-        public CalculationResult Calculate(decimal debtAmount, decimal interestRate, int months);
+        public DebtCalculationResult Calculate(decimal debtAmount, decimal interestRate, int months);
     }
 }

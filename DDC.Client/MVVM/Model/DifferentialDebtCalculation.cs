@@ -4,15 +4,15 @@ using System.Collections.Generic;
 
 namespace DDC.Client.MVVM.Model
 {
-    class DifferentialDebtCalculation : IBankingCalculation
+    class DifferentialDebtCalculation : IDebtCalculation
     {
-        public CalculationResult Calculate(decimal debtAmount, decimal interestRate, int months)
+        public DebtCalculationResult Calculate(decimal debtAmount, decimal interestRate, int months)
         {
             decimal monthlyPayment = debtAmount / months;
             decimal totalInterest = 0;
             decimal totalSum = 0;
 
-            var paymentHistory = new List<PaymentInfo>();
+            var paymentHistory = new List<DebtPaymentInfo>();
             var currentDebtBody = debtAmount;
             for (int i = 0; i < months; i++)
             {
@@ -32,7 +32,7 @@ namespace DDC.Client.MVVM.Model
                 currentDebtBody -= monthlyPayment;
             }
 
-            return new CalculationResult
+            return new DebtCalculationResult
             {
                 MonthlyPayment = monthlyPayment,
                 TotalInterest = totalInterest,
